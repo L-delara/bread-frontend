@@ -18,9 +18,7 @@ function Home() {
   const display = breads.map((bread) => {
     return (
       <div key={bread._id}>
-        <Link to={`/bread/${bread._id}`}>
-          <p>{bread.name}</p>
-        </Link>
+        <Link to={`/bread/${bread._id}`}>{bread.name}</Link>
       </div>
     );
   });

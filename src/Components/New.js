@@ -29,13 +29,12 @@ function New() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const URL = `${process.env.REACT_APP_BACKEND_URI}/breads`;
-    console.log("bread input", breadInput);
     const response = await fetch(URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(breadInput),
     });
-    await response.json();
+    if (response.status !== 201) console.log("error!"); // add error handling later
     navigate("/");
   };
 
