@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Bread() {
-  const [bread, setBread] = useState({});
+  const [bread, setBread] = useState(null);
 
   const { id } = useParams();
 
@@ -17,12 +17,18 @@ function Bread() {
     fetchData();
   }, [id]);
 
-  return (
+  const display = bread && (
     <div>
       <h1>{bread.name}</h1>
+      <p>Has Gluten: {bread.hasGluten.toString()}</p>
       <img src={bread.image} alt={bread.name} height={300} />
+      <div>
+        <button onClick={deleteBread}>Delete</button>
+      </div>
     </div>
   );
+
+  return <div>{display}</div>;
 }
 
 export default Bread;
